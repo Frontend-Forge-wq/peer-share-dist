@@ -1,15 +1,43 @@
+<!--
+  文件: client-pro/index.html
+  主要功能: 单页应用入口 HTML，挂载点 #root、主题预设脚本与基础样式
+  核心技术点: 预设 data-theme 以避免闪烁；引入 Vite 模块入口 src/main.tsx
+  模块交互: 与 ThemeToggle 组件一致的主题策略；加载 React 应用
+-->
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PeerShare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PeerShare Pro</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="icon" href="./favicon.ico" sizes="32x32" />
-    <script type="module" crossorigin src="./assets/index-Cd5RcMzV.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B88s_KN1.css">
+    <script>
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          const media = window.matchMedia('(prefers-color-scheme: dark)');
+          const getTheme = () => {
+            if (!stored || stored === 'auto') return media.matches ? 'dark' : 'light';
+            return stored;
+          };
+          document.documentElement.dataset.theme = getTheme();
+        } catch {}
+      })();
+    </script>
+    <style>
+      :root { --bg: #ffffff; --text: #0b0b0f; --surface: #f5f7fb; --primary: #2563eb; --muted: #6b7280; --border: rgba(0,0,0,0.08); }
+      html[data-theme="dark"] { --bg: #0b0b0f; --text: #e5e7eb; --surface: #12151c; --primary: #3b82f6; --muted: #9ca3af; --border: rgba(255,255,255,0.1); }
+      html, body, #root { height: 100%; }
+      body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+      *, *::before, *::after { box-sizing: border-box; }
+    </style>
+    <script type="module" crossorigin src="./assets/index-30a93734.js"></script>
+    <link rel="stylesheet" href="./assets/index-80731fab.css">
   </head>
   <body>
     <div id="root"></div>
+    
   </body>
   </html>
