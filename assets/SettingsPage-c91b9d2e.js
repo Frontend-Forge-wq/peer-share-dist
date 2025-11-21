@@ -1,0 +1,1 @@
+import{j as a,a as e}from"./index-2f2e5893.js";function d(){return a("div",{className:"page",children:e("div",{className:"card",children:[a("div",{className:"card-title",children:"设置"}),a("div",{className:"card-body",children:"后续将加入多语言、个性化、缓存策略等配置。"})]})})}export{d as default};

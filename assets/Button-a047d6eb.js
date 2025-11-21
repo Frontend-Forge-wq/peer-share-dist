@@ -1,1 +1,0 @@
-import{j as a}from"./index-30a93734.js";function e({children:t,onClick:n,disabled:o,variant:r,className:s}){return a("button",{className:`btn ${r||""} ${s||""}`,onClick:n,disabled:o,children:t})}export{e as B};
